@@ -22,6 +22,9 @@
 
         </activity>
 
+        <activity android:name=".presentation.screens.teams.TeamsActivity"/>
+        <activity android:name=".presentation.screens.news.NewsActivity"/>
+
     </application>
 
 

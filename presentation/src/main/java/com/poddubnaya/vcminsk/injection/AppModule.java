@@ -1,10 +1,12 @@
 package com.poddubnaya.vcminsk.injection;
 
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.poddubnaya.data.database.AppDataBase;
 import com.poddubnaya.data.repository.PlayerRepositoryImpl;
 import com.poddubnaya.data.repository.StaffRepositoryImpl;
 import com.poddubnaya.data.rest.RestApi;
@@ -48,15 +50,15 @@ public class AppModule {
 
     @Provides
     @Singleton
-    public PlayerRepository getPlayerRepository(RestService restService) {
-        return new PlayerRepositoryImpl(restService);
+    public PlayerRepository getPlayerRepository(RestService restService, Context context,AppDataBase appDataBase) {
+        return new PlayerRepositoryImpl(restService,context,appDataBase);
 
     }
 
     @Provides
     @Singleton
-    public StaffRepository getStaffRepository(RestService restService) {
-        return new StaffRepositoryImpl(restService);
+    public StaffRepository getStaffRepository(RestService restService,Context context, AppDataBase appDataBase) {
+        return new StaffRepositoryImpl(restService,context,appDataBase);
 
     }
 
@@ -95,6 +97,18 @@ public class AppModule {
     @Singleton
     public Gson getGson() {
         return new GsonBuilder().create();
+    }
+
+
+    @Provides
+    @Singleton
+    public AppDataBase getAppDatabase(Context context){
+        AppDataBase appDatabase = Room.databaseBuilder(context,
+                AppDataBase.class,
+                "database")
+                .fallbackToDestructiveMigration()
+                .build();
+        return appDatabase;
     }
 
 }
