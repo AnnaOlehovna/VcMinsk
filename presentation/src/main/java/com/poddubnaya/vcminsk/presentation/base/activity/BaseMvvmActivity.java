@@ -1,4 +1,4 @@
-package com.poddubnaya.vcminsk.presentation.base;
+package com.poddubnaya.vcminsk.presentation.base.activity;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -10,7 +10,7 @@ import com.poddubnaya.vcminsk.BR;
 
 
 public abstract class BaseMvvmActivity<Binding extends ViewDataBinding,
-        ViewModel extends BaseViewModel, R extends Router>  extends AppCompatActivity{
+        ViewModel extends BaseActivityViewModel, R extends Router>  extends AppCompatActivity{
 
     protected Binding binding;
     protected ViewModel viewModel;

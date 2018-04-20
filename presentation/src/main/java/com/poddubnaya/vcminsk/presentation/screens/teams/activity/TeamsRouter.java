@@ -1,8 +1,8 @@
-package com.poddubnaya.vcminsk.presentation.screens.teams;
+package com.poddubnaya.vcminsk.presentation.screens.teams.activity;
 
 import android.app.Activity;
 
-import com.poddubnaya.vcminsk.presentation.base.Router;
+import com.poddubnaya.vcminsk.presentation.base.activity.Router;
 
 public class TeamsRouter extends Router{
 

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.poddubnaya.vcminsk.presentation.screens.news.NewsViewModel"/>
+            type="com.poddubnaya.vcminsk.presentation.screens.news.NewsActivityViewModel"/>
     </data>
 <android.support.constraint.ConstraintLayout
 

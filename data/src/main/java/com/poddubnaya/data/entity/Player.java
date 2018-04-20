@@ -1,14 +1,15 @@
 package com.poddubnaya.data.entity;
 
 
-import android.arch.persistence.room.PrimaryKey;
-
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Player {
 
-    @PrimaryKey
+    @SerializedName("objectId")
+    @Expose
+    private String objectId;
+
     @SerializedName("number")
     @Expose
     private int playerNumber;
@@ -92,4 +93,26 @@ public class Player {
     public void setNationality(String nationality) {
         this.nationality = nationality;
     }
+
+    public String getObjectId() {
+        return objectId;
+    }
+
+    public void setObjectId(String objectId) {
+        this.objectId = objectId;
+    }
+
+    public Player(int playerNumber, String surname, String name, String role, int year, int height, String nationality) {
+        this.playerNumber = playerNumber;
+        this.surname = surname;
+        this.name = name;
+        this.role = role;
+        this.year = year;
+        this.height = height;
+        this.nationality = nationality;
+    }
+
+    public Player() {
+    }
+
 }

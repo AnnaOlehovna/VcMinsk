@@ -1,4 +1,4 @@
-package com.poddubnaya.vcminsk.presentation.base;
+package com.poddubnaya.vcminsk.presentation.base.activity;
 
 import android.app.Activity;
 

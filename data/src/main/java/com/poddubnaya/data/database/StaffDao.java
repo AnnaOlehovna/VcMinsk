@@ -7,6 +7,7 @@ import android.arch.persistence.room.Query;
 
 import com.poddubnaya.data.database.databaseEntity.MinchankaPlayer;
 import com.poddubnaya.data.database.databaseEntity.MinchankaStaff;
+import com.poddubnaya.data.database.databaseEntity.StroitelStaff;
 import com.poddubnaya.data.entity.Player;
 import com.poddubnaya.data.entity.Staff;
 
@@ -22,4 +23,19 @@ public interface StaffDao {
 
     @Query("SELECT * FROM MinchankaStaff")
     Flowable<List<MinchankaStaff>> getMinchankaStaff();
+
+
+    @Query("DELETE FROM MinchankaStaff")
+    void deleteMinchankaStaff();
+
+
+    @Insert
+    void insertStroitel(List<StroitelStaff> pList);
+
+    @Query("SELECT * FROM StroitelStaff")
+    Flowable<List<StroitelStaff>> getStroitelStaff();
+
+
+    @Query("DELETE FROM StroitelStaff")
+    void deleteStroitelStaff();
 }

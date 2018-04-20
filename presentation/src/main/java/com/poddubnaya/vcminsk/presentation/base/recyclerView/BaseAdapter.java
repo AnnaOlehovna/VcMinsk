@@ -1,12 +1,9 @@
-package com.poddubnaya.vcminsk.presentation.base;
+package com.poddubnaya.vcminsk.presentation.base.recyclerView;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import io.reactivex.subjects.PublishSubject;
 
 public abstract class BaseAdapter<Model,
         ItemViewModel extends BaseItemViewModel<Model>>
@@ -47,11 +44,10 @@ public abstract class BaseAdapter<Model,
         return itemList.size();
     }
 
-    //на случай если надо передать и модель и позицию в списке
+
     public static class ItemEntity<Model>{
 
         public Model model;
-        public int position;
         public ItemEntity(Model model) {
             this.model = model;
         }

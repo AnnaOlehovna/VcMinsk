@@ -1,14 +1,14 @@
 package com.poddubnaya.domain.entity;
 
 
-public class StaffDomain {
+public class StaffDomain implements Comparable<StaffDomain> {
+    private int prior;
 
-   private String surname;
+    private String surname;
 
     private String name;
 
     private String middleName;
-
 
     private String role;
 
@@ -28,11 +28,19 @@ public class StaffDomain {
         return role;
     }
 
-
-    public StaffDomain(String surname, String name, String middleName, String role) {
+    public StaffDomain(int prior, String surname, String name, String middleName, String role) {
+        this.prior = prior;
         this.surname = surname;
         this.name = name;
         this.middleName = middleName;
         this.role = role;
+    }
+
+    @Override
+    public int compareTo(StaffDomain o) {
+        if(this.prior==o.prior)
+            return 0;
+        if(this.prior>o.prior) return 1;
+        return -1;
     }
 }

@@ -7,11 +7,14 @@ import com.poddubnaya.domain.repository.StaffRepository;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Flowable;
 
 public class GetStaffListUseCase extends BaseUseCase {
     private StaffRepository staffRepository;
 
+    @Inject
     public GetStaffListUseCase(PostExecutionThread postExecutionThread, StaffRepository staffRepository) {
         super(postExecutionThread);
         this.staffRepository = staffRepository;

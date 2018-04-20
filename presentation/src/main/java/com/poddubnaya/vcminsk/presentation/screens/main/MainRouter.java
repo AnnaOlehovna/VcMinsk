@@ -5,9 +5,9 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.poddubnaya.vcminsk.R;
-import com.poddubnaya.vcminsk.presentation.base.Router;
+import com.poddubnaya.vcminsk.presentation.base.activity.Router;
 import com.poddubnaya.vcminsk.presentation.screens.news.NewsActivity;
-import com.poddubnaya.vcminsk.presentation.screens.teams.TeamsActivity;
+import com.poddubnaya.vcminsk.presentation.screens.teams.activity.TeamsActivity;
 
 public class MainRouter extends Router {
 

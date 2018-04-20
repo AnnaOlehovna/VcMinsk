@@ -24,20 +24,23 @@ public class RestService {
     }
 
 
-    public Flowable<List<Player>> getPlayers(String team){
+    public Flowable<List<Player>> getPlayers(String team, String offset) {
         String url = null;
-        if(team.equals(Constants.MINCHANKA));
+        if (team.equals(Constants.MINCHANKA))
         {
             url = Constants.MINCHANKA_PLAYERS_URL;
+        }else if (team.equals(Constants.STROITEL)) {
+            url = Constants.STROITEL_PLAYERS_URL;
         }
-        return restApi.getPlayers(url);
+        return restApi.getPlayers(url, offset);
     }
 
-    public Flowable<List<Staff>> getStaff(String team){
+    public Flowable<List<Staff>> getStaff(String team) {
         String url = null;
-        if(team.equals(Constants.MINCHANKA))
-        {
+        if (team.equals(Constants.MINCHANKA)) {
             url = Constants.MINCHANKA_STAFF_URL;
+        } else if (team.equals(Constants.STROITEL)) {
+            url = Constants.STROITEL_STAFF_URL;
         }
         return restApi.getStaff(url);
     }

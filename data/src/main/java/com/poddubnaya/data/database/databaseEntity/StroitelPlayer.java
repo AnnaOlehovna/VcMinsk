@@ -7,8 +7,8 @@ import android.support.annotation.NonNull;
 
 import com.poddubnaya.data.entity.Player;
 
-@Entity(tableName = "MinchankaPlayer")
-public class MinchankaPlayer extends Player {
+@Entity(tableName = "StroitelPlayer")
+public class StroitelPlayer extends Player {
 
     @PrimaryKey
     @NonNull
@@ -23,17 +23,17 @@ public class MinchankaPlayer extends Player {
     }
 
     @Ignore
-    public MinchankaPlayer(int playerNumber, String surname, String name, String role, int year, int height, String nationality) {
+    public StroitelPlayer(int playerNumber, String surname, String name, String role, int year, int height, String nationality) {
         super(playerNumber, surname, name, role, year, height, nationality);
     }
 
     @Ignore
-    public MinchankaPlayer(int playerNumber, String surname, String name, String role, int year, int height, String nationality, String id) {
+    public StroitelPlayer(int playerNumber, String surname, String name, String role, int year, int height, String nationality, String id) {
         super(playerNumber, surname, name, role, year, height, nationality);
         this.id = id;
     }
 
-    public MinchankaPlayer() {
+    public StroitelPlayer() {
     }
 
 }

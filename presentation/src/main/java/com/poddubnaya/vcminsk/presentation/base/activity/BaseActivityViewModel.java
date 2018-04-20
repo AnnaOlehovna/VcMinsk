@@ -1,11 +1,11 @@
-package com.poddubnaya.vcminsk.presentation.base;
+package com.poddubnaya.vcminsk.presentation.base.activity;
 
 import android.arch.lifecycle.ViewModel;
 import android.support.annotation.Nullable;
 
 import io.reactivex.disposables.CompositeDisposable;
 
-public abstract class BaseViewModel<R extends Router> extends ViewModel {
+public abstract class BaseActivityViewModel<R extends Router> extends ViewModel {
 
     protected CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -23,7 +23,7 @@ public abstract class BaseViewModel<R extends Router> extends ViewModel {
 
     public abstract void createInject();
 
-    public BaseViewModel() {
+    public BaseActivityViewModel() {
         super();
         createInject();
     }

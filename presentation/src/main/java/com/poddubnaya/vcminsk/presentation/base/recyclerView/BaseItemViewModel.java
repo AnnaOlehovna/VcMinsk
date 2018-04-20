@@ -1,4 +1,4 @@
-package com.poddubnaya.vcminsk.presentation.base;
+package com.poddubnaya.vcminsk.presentation.base.recyclerView;
 
 
 public abstract class BaseItemViewModel<Model> {

@@ -2,9 +2,9 @@ package com.poddubnaya.vcminsk.presentation.screens.main;
 
 import android.view.View;
 
-import com.poddubnaya.vcminsk.presentation.base.BaseViewModel;
+import com.poddubnaya.vcminsk.presentation.base.activity.BaseActivityViewModel;
 
-public class MainViewModel extends BaseViewModel<MainRouter> {
+public class MainActivityViewModel extends BaseActivityViewModel<MainRouter> {
 
     @Override
     public void createInject() {

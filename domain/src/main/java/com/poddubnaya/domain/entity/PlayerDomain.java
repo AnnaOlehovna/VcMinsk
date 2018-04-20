@@ -1,7 +1,6 @@
 package com.poddubnaya.domain.entity;
 
-
-public class PlayerDomain {
+public class PlayerDomain implements Comparable<PlayerDomain>{
 
     private int playerNumber;
 
@@ -53,5 +52,13 @@ public class PlayerDomain {
         this.year = year;
         this.height = height;
         this.nationality = nationality;
+    }
+
+    @Override
+    public int compareTo(PlayerDomain o) {
+        if(this.playerNumber==o.playerNumber)
+            return 0;
+        if(this.playerNumber>o.playerNumber) return 1;
+        return -1;
     }
 }

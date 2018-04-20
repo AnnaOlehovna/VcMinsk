@@ -1,4 +1,4 @@
-package com.poddubnaya.vcminsk.presentation.screens.teams;
+package com.poddubnaya.vcminsk.presentation.screens.teams.activity;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -8,17 +8,18 @@ import android.support.v4.view.ViewPager;
 
 import com.poddubnaya.vcminsk.R;
 import com.poddubnaya.vcminsk.databinding.TeamsActivityBinding;
-import com.poddubnaya.vcminsk.presentation.base.BaseMvvmActivity;
+import com.poddubnaya.vcminsk.presentation.base.activity.BaseMvvmActivity;
+import com.poddubnaya.vcminsk.presentation.screens.teams.fragment.MyFragmentPagerAdapter;
 
-public class TeamsActivity extends BaseMvvmActivity<TeamsActivityBinding, TeamsViewModel,TeamsRouter> {
+public class TeamsActivity extends BaseMvvmActivity<TeamsActivityBinding, TeamsActivityViewModel, TeamsRouter> {
     @Override
     public int provideLayoutId() {
         return R.layout.teams_activity;
     }
 
     @Override
-    public TeamsViewModel provideViewModel() {
-        return ViewModelProviders.of(this).get(TeamsViewModel.class);
+    public TeamsActivityViewModel provideViewModel() {
+        return ViewModelProviders.of(this).get(TeamsActivityViewModel.class);
     }
 
     @Override
@@ -30,8 +31,8 @@ public class TeamsActivity extends BaseMvvmActivity<TeamsActivityBinding, TeamsV
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle("Teams".toUpperCase());
-       ViewPager viewPager = binding.viewPager;
-       viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(),this));
+        ViewPager viewPager = binding.viewPager;
+        viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(), this));
         TabLayout tablayout = binding.tablayout;
         tablayout.setupWithViewPager(viewPager);
     }

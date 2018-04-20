@@ -1,4 +1,4 @@
-package com.poddubnaya.vcminsk.presentation.base;
+package com.poddubnaya.vcminsk.presentation.base.recyclerView;
 
 import android.databinding.ViewDataBinding;
 import android.support.v7.widget.RecyclerView;

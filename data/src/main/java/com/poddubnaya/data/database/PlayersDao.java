@@ -5,6 +5,7 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
 import com.poddubnaya.data.database.databaseEntity.MinchankaPlayer;
+import com.poddubnaya.data.database.databaseEntity.StroitelPlayer;
 import com.poddubnaya.data.entity.Player;
 
 import java.util.List;
@@ -19,4 +20,18 @@ public interface PlayersDao {
 
     @Query("SELECT * FROM MinchankaPlayer")
     Flowable<List<MinchankaPlayer>> getMinchankaPlayers();
+
+    @Query("DELETE FROM MinchankaPlayer")
+    void deleteMinchankaPlayer();
+
+
+    @Insert
+    void insertStroitel(List<StroitelPlayer> pList);
+
+    @Query("SELECT * FROM StroitelPlayer")
+    Flowable<List<StroitelPlayer>> getStroitelPlayers();
+
+    @Query("DELETE FROM StroitelPlayer")
+    void deleteStroitelPlayer();
+
 }

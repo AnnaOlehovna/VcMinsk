@@ -5,17 +5,17 @@ import android.arch.lifecycle.ViewModelProviders;
 
 import com.poddubnaya.vcminsk.R;
 import com.poddubnaya.vcminsk.databinding.NewsActivityBinding;
-import com.poddubnaya.vcminsk.presentation.base.BaseMvvmActivity;
+import com.poddubnaya.vcminsk.presentation.base.activity.BaseMvvmActivity;
 
-public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsViewModel,NewsRouter> {
+public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsActivityViewModel,NewsRouter> {
     @Override
     public int provideLayoutId() {
         return R.layout.news_activity;
     }
 
     @Override
-    public NewsViewModel provideViewModel() {
-        return ViewModelProviders.of(this).get(NewsViewModel.class);
+    public NewsActivityViewModel provideViewModel() {
+        return ViewModelProviders.of(this).get(NewsActivityViewModel.class);
     }
 
     @Override

@@ -5,17 +5,17 @@ import android.arch.lifecycle.ViewModelProviders;
 
 import com.poddubnaya.vcminsk.R;
 import com.poddubnaya.vcminsk.databinding.MainActivityBinding;
-import com.poddubnaya.vcminsk.presentation.base.BaseMvvmActivity;
+import com.poddubnaya.vcminsk.presentation.base.activity.BaseMvvmActivity;
 
-public class MainActivity extends BaseMvvmActivity<MainActivityBinding, MainViewModel,MainRouter> {
+public class MainActivity extends BaseMvvmActivity<MainActivityBinding, MainActivityViewModel,MainRouter> {
     @Override
     public int provideLayoutId() {
         return R.layout.main_activity;
     }
 
     @Override
-    public MainViewModel provideViewModel() {
-        return ViewModelProviders.of(this).get(MainViewModel.class);
+    public MainActivityViewModel provideViewModel() {
+        return ViewModelProviders.of(this).get(MainActivityViewModel.class);
     }
 
     @Override

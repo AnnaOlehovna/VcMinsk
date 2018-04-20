@@ -8,7 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="textStyle" parent="TextAppearance.AppCompat.Widget.Button">
+    <style name="textStyleTitle" parent="TextAppearance.AppCompat.Widget.Button">
         <item name="android:textSize">25sp</item>
         <item name="android:textStyle">bold|italic</item>
         <item name="android:textColor">@color/textColor</item>
@@ -20,6 +20,12 @@
         <item name="android:textColor">@color/buttonColor</item>
         <item name="textAllCaps">true</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextPlayerItem" >
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:singleLine">true</item>
     </style>
 
 </resources>
