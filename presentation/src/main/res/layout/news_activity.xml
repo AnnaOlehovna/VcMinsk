@@ -3,14 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="viewModel"
-            type="com.poddubnaya.vcminsk.presentation.screens.news.NewsActivityViewModel"/>
+            type="com.poddubnaya.vcminsk.presentation.screens.news.NewsViewModel" />
     </data>
-<android.support.constraint.ConstraintLayout
 
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <LinearLayout
 
-</android.support.constraint.ConstraintLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/news_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
 </layout>

@@ -30,7 +30,7 @@ public class TeamsActivity extends BaseMvvmActivity<TeamsActivityBinding, TeamsA
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Teams".toUpperCase());
+        setTitle(getResources().getString(R.string.team_button));
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(), this));
         TabLayout tablayout = binding.tablayout;

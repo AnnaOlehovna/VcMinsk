@@ -31,7 +31,9 @@ public abstract class BaseAdapter<Model,
         notifyDataSetChanged();
     }
 
-
+    public List<Model> getItemList() {
+        return itemList;
+    }
 
     @Override
     public void onBindViewHolder(BaseItemViewHolder<Model, ItemViewModel, ?> holder, int position) {

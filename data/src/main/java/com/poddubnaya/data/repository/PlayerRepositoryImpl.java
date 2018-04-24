@@ -83,6 +83,7 @@ public class PlayerRepositoryImpl implements PlayerRepository {
                             }
                         }
                     });
+
         } else {
             if(team.equals(Constants.MINCHANKA)) {
                 players = playersDao.getMinchankaPlayers()

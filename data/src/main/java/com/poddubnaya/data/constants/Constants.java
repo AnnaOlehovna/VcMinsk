@@ -19,5 +19,8 @@ public class Constants {
     public final static String STROITEL_PLAYERS_URL ="data/StroitelPlayers";
     public final static String STROITEL_STAFF_URL ="data/StroitelStaff";
 
+    public final static String NEWS_ID ="NEWS_ID";
+
+
 
 }

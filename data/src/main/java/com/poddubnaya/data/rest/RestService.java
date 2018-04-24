@@ -2,6 +2,7 @@ package com.poddubnaya.data.rest;
 
 
 import com.poddubnaya.data.constants.Constants;
+import com.poddubnaya.data.entity.News;
 import com.poddubnaya.data.entity.Player;
 import com.poddubnaya.data.entity.Staff;
 
@@ -26,10 +27,9 @@ public class RestService {
 
     public Flowable<List<Player>> getPlayers(String team, String offset) {
         String url = null;
-        if (team.equals(Constants.MINCHANKA))
-        {
+        if (team.equals(Constants.MINCHANKA)) {
             url = Constants.MINCHANKA_PLAYERS_URL;
-        }else if (team.equals(Constants.STROITEL)) {
+        } else if (team.equals(Constants.STROITEL)) {
             url = Constants.STROITEL_PLAYERS_URL;
         }
         return restApi.getPlayers(url, offset);
@@ -43,5 +43,27 @@ public class RestService {
             url = Constants.STROITEL_STAFF_URL;
         }
         return restApi.getStaff(url);
+    }
+
+    public Flowable<List<News>> getNews(String[] team) {
+        String str;
+        if (team.length == 1) {
+            str = "team='" + team[0] + "'";
+
+        }else{
+            String temp = "'"+team[0]+"'";
+            for (int i = 1; i<team.length; i++){
+                temp = temp.concat(",'"+team[i]+"'");
+            }
+            str ="team in"+"("+temp+")";
+        }
+//        int size = team.length;
+//        String[] param = new String[size];
+//        for (int i=0; i< team.length;i++) {
+//            String str = "team%3D'"+team[i]+"'";
+//            param[i] = str;
+//        }
+
+        return restApi.getNews(str);
     }
 }

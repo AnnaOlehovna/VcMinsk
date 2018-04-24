@@ -28,7 +28,6 @@ public interface StaffDao {
     @Query("DELETE FROM MinchankaStaff")
     void deleteMinchankaStaff();
 
-
     @Insert
     void insertStroitel(List<StroitelStaff> pList);
 

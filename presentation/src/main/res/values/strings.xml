@@ -1,9 +1,13 @@
 <resources>
-    <string name="app_name">Fan VCMinsk</string>
-    <string name="greeting">You"'re welcome!\u00A0</string>
-    <string name="news_button">news\u00A0</string>
-    <string name="team_button">teams\u00A0</string>
-    <string name="card_button">register \nfan"'s card\u00A0</string>
+    <string name="app_name">Болельщик ВК Минск</string>
+    <string name="greeting">Добро пожаловать!\u00A0</string>
+    <string name="news_button">Новости\u00A0</string>
+    <string name="team_button">Команды\u00A0</string>
+    <string name="card_button">Зарегистрировать \nкарту болельщика\u00A0</string>
     <string name="fancard_uri">https://docs.google.com/forms/d/11GT1VqZAr1BahURI6dg8Eo8v_vfgVxKvUnilII-ca3o/viewform?edit_requested=true</string>
-    <string name="text_height">Height:</string>
+    <string name="text_height">Рост:</string>
+    <string name="text_team">MINCHANKA</string>
+    <string name="text_title">Title</string>
+    <string name="minchanka_team">минчанка</string>
+    <string name="stroitel_team">строитель</string>
 </resources>

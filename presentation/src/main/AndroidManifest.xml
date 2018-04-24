@@ -24,6 +24,7 @@
 
         <activity android:name=".presentation.screens.teams.activity.TeamsActivity"/>
         <activity android:name=".presentation.screens.news.NewsActivity"/>
+        <activity android:name=".presentation.screens.singleNews.SingleNewsActivity"/>
 
     </application>
 

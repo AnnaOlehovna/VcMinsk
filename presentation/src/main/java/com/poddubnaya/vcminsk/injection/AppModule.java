@@ -7,11 +7,13 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.poddubnaya.data.database.AppDataBase;
+import com.poddubnaya.data.repository.NewsRepositoryImpl;
 import com.poddubnaya.data.repository.PlayerRepositoryImpl;
 import com.poddubnaya.data.repository.StaffRepositoryImpl;
 import com.poddubnaya.data.rest.RestApi;
 import com.poddubnaya.data.rest.RestService;
 import com.poddubnaya.domain.executor.PostExecutionThread;
+import com.poddubnaya.domain.repository.NewsRepository;
 import com.poddubnaya.domain.repository.PlayerRepository;
 import com.poddubnaya.domain.repository.StaffRepository;
 import com.poddubnaya.vcminsk.domain.UIThread;
@@ -62,6 +64,13 @@ public class AppModule {
 
     }
 
+    @Provides
+    @Singleton
+    public NewsRepository getNewsRepository( RestService restService, Context context, AppDataBase appDataBase) {
+        return new NewsRepositoryImpl(restService,context,appDataBase);
+
+    }
+
 
     @Provides
     @Singleton
@@ -76,7 +85,7 @@ public class AppModule {
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .baseUrl("https://api.backendless.com/211E03F7-45E3-C81A-FF0D-C31C3EB07C00/9D4E87D9-BC56-9CDA-FF2F-16247CFF6300/")
+                .baseUrl("https://api.backendless.com/011377EA-79CF-5078-FFEC-750AF685BE00/FD5C4876-8678-6191-FF14-124DA1260B00/")
                 .client(okHttpClient)
                 .build();
     }
