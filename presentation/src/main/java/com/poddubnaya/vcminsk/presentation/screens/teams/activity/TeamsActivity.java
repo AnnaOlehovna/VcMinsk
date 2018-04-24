@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.poddubnaya.vcminsk.R;
 import com.poddubnaya.vcminsk.databinding.TeamsActivityBinding;
@@ -30,7 +32,17 @@ public class TeamsActivity extends BaseMvvmActivity<TeamsActivityBinding, TeamsA
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(getResources().getString(R.string.team_button));
+        Toolbar toolbar = binding.toolBar;
+        binding.toolbatTitle.setText(getResources().getString(R.string.team_button));
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(new MyFragmentPagerAdapter(getSupportFragmentManager(), this));
         TabLayout tablayout = binding.tablayout;

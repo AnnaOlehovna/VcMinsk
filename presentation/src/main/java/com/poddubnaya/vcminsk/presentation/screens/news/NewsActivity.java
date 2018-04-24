@@ -5,12 +5,14 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.poddubnaya.vcminsk.R;
 import com.poddubnaya.vcminsk.databinding.NewsActivityBinding;
 import com.poddubnaya.vcminsk.presentation.base.activity.BaseMvvmActivity;
 
-public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsViewModel,NewsRouter> {
+public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsViewModel, NewsRouter> {
     @Override
     public int provideLayoutId() {
         return R.layout.news_activity;
@@ -29,7 +31,17 @@ public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsView
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(getResources().getString(R.string.news_button));
+        Toolbar toolbar = binding.toolBar;
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+        binding.toolbatTitle.setText(getResources().getString(R.string.news_button));
         binding.newsRecycler.setLayoutManager(new LinearLayoutManager(this));
         binding.newsRecycler.setHasFixedSize(true);
         binding.newsRecycler.setAdapter(viewModel.adapter);
