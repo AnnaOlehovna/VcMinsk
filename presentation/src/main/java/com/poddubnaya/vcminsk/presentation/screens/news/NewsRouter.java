@@ -17,6 +17,5 @@ public class NewsRouter extends Router{
         Intent intent = new Intent(getActivity(), SingleNewsActivity.class);
         intent.putExtra(Constants.NEWS_ID, id);
         getActivity().startActivity(intent);
-
     }
 }

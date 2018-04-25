@@ -23,4 +23,7 @@ public interface RestApi {
     @GET("data/news")
     Flowable<List<News>> getNews(@Query("where") String team);
 
+    @GET("data/news/{id}")
+    Flowable<News> getNewsById(@Path("id") String id);
+
 }

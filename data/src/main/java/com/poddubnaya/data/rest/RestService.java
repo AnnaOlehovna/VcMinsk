@@ -2,10 +2,13 @@ package com.poddubnaya.data.rest;
 
 
 import com.poddubnaya.data.constants.Constants;
+import com.poddubnaya.data.entity.ErrorType;
+import com.poddubnaya.data.entity.MyError;
 import com.poddubnaya.data.entity.News;
 import com.poddubnaya.data.entity.Player;
 import com.poddubnaya.data.entity.Staff;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -17,11 +20,13 @@ import io.reactivex.Flowable;
 public class RestService {
 
     private RestApi restApi;
+    private ErrorTransformers errorTransformers;
 
     @Inject
 
-    public RestService(RestApi restApi) {
+    public RestService(RestApi restApi, ErrorTransformers errorTransformers) {
         this.restApi = restApi;
+        this.errorTransformers = errorTransformers;
     }
 
 
@@ -47,23 +52,25 @@ public class RestService {
 
     public Flowable<List<News>> getNews(String[] team) {
         String str;
-        if (team.length == 1) {
+        if (team.length == 0) {
+            return Flowable.empty();
+        } else if (team.length == 1) {
             str = "team='" + team[0] + "'";
-
-        }else{
-            String temp = "'"+team[0]+"'";
-            for (int i = 1; i<team.length; i++){
-                temp = temp.concat(",'"+team[i]+"'");
+        } else {
+            String temp = "'" + team[0] + "'";
+            for (int i = 1; i < team.length; i++) {
+                temp = temp.concat(",'" + team[i] + "'");
             }
-            str ="team in"+"("+temp+")";
+            str = "team in" + "(" + temp + ")";
         }
-//        int size = team.length;
-//        String[] param = new String[size];
-//        for (int i=0; i< team.length;i++) {
-//            String str = "team%3D'"+team[i]+"'";
-//            param[i] = str;
-//        }
-
-        return restApi.getNews(str);
+        return restApi
+                .getNews(str)
+                .compose(errorTransformers.<List<News>,MyError>parseHttpError());
     }
+
+    public Flowable<News> getNewsById(String id){
+        return restApi.getNewsById(id)
+                .compose(errorTransformers.<News,MyError>parseHttpError());
+    }
+
 }

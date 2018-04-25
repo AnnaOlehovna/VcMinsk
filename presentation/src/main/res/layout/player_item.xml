@@ -22,7 +22,7 @@
         android:layout_marginTop="8dp"
         android:hint="12"
         android:text="@{viewModel.number}"
-        android:textColor="@color/playerNumber"
+        android:textColor="@color/redTitle"
         android:textSize="40sp"
         android:shadowColor="@color/buttonColor"
         android:shadowDy="-5"
@@ -39,7 +39,7 @@
         android:layout_marginTop="8dp"
         android:hint="Surname"
         android:text="@{viewModel.surname}"
-        android:textAppearance="@style/TextPlayerItem"
+        android:textAppearance="@style/SimpleText"
         app:layout_constraintStart_toEndOf="@+id/player_number"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,7 +51,7 @@
         android:layout_marginTop="8dp"
         android:hint="Name"
         android:text="@{viewModel.name}"
-        android:textAppearance="@style/TextPlayerItem"
+        android:textAppearance="@style/SimpleText"
         app:layout_constraintStart_toEndOf="@+id/surname"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,7 +63,7 @@
         android:layout_marginTop="8dp"
         android:hint="1992"
         android:text="@{viewModel.year}"
-        android:textAppearance="@style/TextPlayerItem"
+        android:textAppearance="@style/SimpleText"
         app:layout_constraintStart_toEndOf="@+id/player_number"
         app:layout_constraintTop_toBottomOf="@+id/surname" />
 
@@ -75,7 +75,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/text_height"
-        android:textAppearance="@style/TextPlayerItem"
+        android:textAppearance="@style/SimpleText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/player_number"
         app:layout_constraintTop_toBottomOf="@+id/year" />
@@ -89,7 +89,7 @@
         android:layout_marginTop="8dp"
         android:hint="192"
         android:text="@{viewModel.height}"
-        android:textAppearance="@style/TextPlayerItem"
+        android:textAppearance="@style/SimpleText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_height"
         app:layout_constraintTop_toBottomOf="@+id/year" />
@@ -103,7 +103,7 @@
         android:layout_marginTop="24dp"
         android:hint="Role"
         android:text="@{viewModel.role}"
-        android:textAppearance="@style/TextPlayerItem"
+        android:textAppearance="@style/SimpleText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -115,7 +115,7 @@
         android:layout_marginTop="8dp"
         android:hint="NAt"
         android:text="@{viewModel.nationality}"
-        android:textAppearance="@style/TextPlayerItem"
+        android:textAppearance="@style/SimpleText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/role" />
 

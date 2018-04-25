@@ -66,8 +66,8 @@ public class AppModule {
 
     @Provides
     @Singleton
-    public NewsRepository getNewsRepository( RestService restService, Context context, AppDataBase appDataBase) {
-        return new NewsRepositoryImpl(restService,context,appDataBase);
+    public NewsRepository getNewsRepository( RestService restService, Context context) {
+        return new NewsRepositoryImpl(restService,context);
 
     }
 

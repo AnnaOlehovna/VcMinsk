@@ -8,6 +8,9 @@
     <string name="text_height">Рост:</string>
     <string name="text_team">MINCHANKA</string>
     <string name="text_title">Title</string>
-    <string name="minchanka_team">минчанка</string>
-    <string name="stroitel_team">строитель</string>
+    <string name="minchanka_team">Минчанка</string>
+    <string name="stroitel_team">Строитель</string>
+    <string name="empty_news">Вы не выбрали ни одной команды,\nдля которых отображаются новости.
+    \nГляньте-ка в меню!</string>
+    <string name="no_internet">Подключите интернет, чтобы получить свежие новости</string>
 </resources>

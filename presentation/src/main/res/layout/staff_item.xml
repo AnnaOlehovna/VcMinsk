@@ -23,7 +23,7 @@
         android:layout_marginTop="8dp"
         android:hint="Surname"
         android:text="@{viewModel.surname}"
-        android:textAppearance="@style/TextPlayerItem"
+        android:textAppearance="@style/SimpleText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,7 +35,7 @@
         android:layout_marginTop="8dp"
         android:hint="Name"
         android:text="@{viewModel.name}"
-        android:textAppearance="@style/TextPlayerItem"
+        android:textAppearance="@style/SimpleText"
         app:layout_constraintStart_toEndOf="@+id/surname"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,7 +47,7 @@
         android:layout_marginTop="8dp"
         android:hint="middleName"
         android:text="@{viewModel.middleName}"
-        android:textAppearance="@style/TextPlayerItem"
+        android:textAppearance="@style/SimpleText"
         app:layout_constraintStart_toEndOf="@+id/name"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,10 +60,7 @@
         android:layout_marginTop="16dp"
         android:hint="role"
         android:text="@{viewModel.role}"
-        android:textAppearance="@style/TextPlayerItem"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@color/playerNumber"
+        android:textAppearance="@style/TextRedTitle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/surname" />

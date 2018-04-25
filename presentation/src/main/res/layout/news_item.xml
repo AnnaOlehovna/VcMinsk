@@ -23,10 +23,7 @@
             android:layout_marginTop="8dp"
             android:hint="@string/text_team"
             android:text="@{viewModel.team}"
-            android:textAllCaps="true"
-            android:textStyle="bold"
-            android:textAppearance="@style/TextPlayerItem"
-            android:textColor="@color/playerNumber"
+            android:textAppearance="@style/TextRedTitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -39,7 +36,7 @@
             android:layout_marginStart="8dp"
             android:hint="@string/text_title"
             android:text="@{viewModel.title}"
-            android:textAppearance="@style/TextPlayerItem"
+            android:textAppearance="@style/SimpleText"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

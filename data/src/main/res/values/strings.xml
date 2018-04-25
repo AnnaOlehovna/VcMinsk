@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">data</string>
+    <string name="My_shared_pref">MY_PREFERENCE</string>
 </resources>
