@@ -36,7 +36,7 @@ public class TeamsActivity extends BaseMvvmActivity<TeamsActivityBinding, TeamsA
         binding.toolbatTitle.setText(getResources().getString(R.string.team_button));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationIcon(R.drawable.arrow_back_black_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,12 +4,12 @@
 <group android:checkableBehavior="all">
     <item android:title="@string/minchanka_team"
         android:id="@+id/minchaka_chooser"
-        android:icon="@drawable/ic_more_vert_black_24dp"
+        android:icon="@drawable/menu_dot_white_24dp"
         android:orderInCategory="100"
         app:showAsAction="withText"  />
     <item android:title="@string/stroitel_team"
         android:id="@+id/stroitel_chooser"
-        android:icon="@drawable/ic_more_vert_black_24dp"
+        android:icon="@drawable/menu_dot_white_24dp"
         android:orderInCategory="100"
         app:showAsAction="withText"  />
 </group>

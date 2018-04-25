@@ -2,7 +2,6 @@ package com.poddubnaya.vcminsk.presentation.screens.news;
 
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,10 +16,6 @@ import com.poddubnaya.vcminsk.R;
 import com.poddubnaya.vcminsk.app.App;
 import com.poddubnaya.vcminsk.databinding.NewsActivityBinding;
 import com.poddubnaya.vcminsk.presentation.base.activity.BaseMvvmActivity;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
 import javax.inject.Inject;
 
@@ -55,7 +50,7 @@ public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsView
         Toolbar toolbar = binding.toolBar;
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        toolbar.setNavigationIcon(R.drawable.arrow_back_black_24dp);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
