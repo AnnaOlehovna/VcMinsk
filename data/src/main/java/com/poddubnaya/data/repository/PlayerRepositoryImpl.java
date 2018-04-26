@@ -10,6 +10,7 @@ import com.poddubnaya.data.database.databaseEntity.MinchankaPlayer;
 import com.poddubnaya.data.database.databaseEntity.StroitelPlayer;
 import com.poddubnaya.data.entity.Player;
 import com.poddubnaya.data.rest.RestService;
+import com.poddubnaya.data.utils.InternetConnection;
 import com.poddubnaya.domain.entity.PlayerDomain;
 import com.poddubnaya.domain.repository.PlayerRepository;
 
@@ -42,7 +43,7 @@ public class PlayerRepositoryImpl implements PlayerRepository {
     @Override
     public Flowable<List<PlayerDomain>> getPlayers(final String team) {
         Flowable<List<Player>> players;
-        if (checkNetwork()) {
+        if (InternetConnection.getInstance().checkNetwork(context)) {
             String offset = "0";
             players = restService.getPlayers(team, offset)
                     .doOnNext(new Consumer<List<Player>>() {
@@ -132,16 +133,6 @@ public class PlayerRepositoryImpl implements PlayerRepository {
                 });
     }
 
-    private boolean checkNetwork() {
-        boolean isConnected = false;
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager != null) {
-            if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                isConnected = true;
-            }
-        }
-        return isConnected;
-    }
+
 
 }

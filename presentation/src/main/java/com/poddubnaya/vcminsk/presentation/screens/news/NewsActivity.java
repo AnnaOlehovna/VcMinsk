@@ -2,7 +2,10 @@ package com.poddubnaya.vcminsk.presentation.screens.news;
 
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.databinding.ObservableField;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -16,6 +19,7 @@ import android.view.View;
 
 import com.poddubnaya.data.constants.Constants;
 import com.poddubnaya.data.constants.MySharedPref;
+import com.poddubnaya.data.utils.InternetConnection;
 import com.poddubnaya.vcminsk.R;
 import com.poddubnaya.vcminsk.app.App;
 import com.poddubnaya.vcminsk.databinding.NewsActivityBinding;
@@ -53,6 +57,7 @@ public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsView
         return new NewsRouter(this);
     }
 
+    private Disposable disposable;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,6 +77,7 @@ public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsView
         binding.newsRecycler.setLayoutManager(new LinearLayoutManager(this));
         binding.newsRecycler.setHasFixedSize(true);
         binding.newsRecycler.setAdapter(viewModel.adapter);
+
     }
 
     @Override
@@ -128,12 +134,41 @@ public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsView
     @Override
     protected void onResume() {
         super.onResume();
+       disposable= checkInternet()
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        if (aBoolean)
+                            viewModel.onResume();
+                    }
+                });
+
     }
 
 
     @Override
     protected void onPause() {
         super.onPause();
+        if (disposable != null)
+            disposable.dispose();
+    }
 
+
+    private Observable<Boolean> checkInternet() {
+        return Observable.create(new ObservableOnSubscribe<Boolean>() {
+            @Override
+            public void subscribe(final ObservableEmitter<Boolean> emitter) throws Exception {
+                BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+                    @Override
+                    public void onReceive(Context context, Intent intent) {
+                        boolean isConnected = InternetConnection.getInstance().checkNetwork(context);
+                        emitter.onNext(isConnected);
+                    }
+                };
+                IntentFilter intentFilter = new IntentFilter();
+                intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
+                registerReceiver(broadcastReceiver, intentFilter);
+            }
+        });
     }
 }

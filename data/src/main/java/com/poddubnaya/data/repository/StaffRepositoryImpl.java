@@ -14,8 +14,11 @@ import com.poddubnaya.data.database.databaseEntity.StroitelStaff;
 import com.poddubnaya.data.entity.Player;
 import com.poddubnaya.data.entity.Staff;
 import com.poddubnaya.data.rest.RestService;
+import com.poddubnaya.data.utils.InternetConnection;
 import com.poddubnaya.domain.entity.StaffDomain;
 import com.poddubnaya.domain.repository.StaffRepository;
+
+
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -41,7 +44,7 @@ public class StaffRepositoryImpl implements StaffRepository {
     @Override
     public Flowable<List<StaffDomain>> getStaff(final String team) {
         Flowable<List<Staff>> listStaff;
-        if(checkNetwork()){
+        if(InternetConnection.getInstance().checkNetwork(context)){
             listStaff = restService.getStaff(team)
                     .doOnNext(new Consumer<List<Staff>>() {
                         @Override
@@ -124,16 +127,4 @@ public class StaffRepositoryImpl implements StaffRepository {
                 });
     }
 
-
-    private boolean checkNetwork() {
-        boolean isConnected = false;
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager != null) {
-            if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                isConnected = true;
-            }
-        }
-        return isConnected;
-    }
 }

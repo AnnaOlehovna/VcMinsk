@@ -68,15 +68,4 @@ public class NewsRepositoryImpl implements NewsRepository {
                 });
     }
 
-    private boolean checkNetwork() {
-        boolean isConnected = false;
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivityManager != null) {
-            if (connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).getState() == NetworkInfo.State.CONNECTED ||
-                    connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI).getState() == NetworkInfo.State.CONNECTED) {
-                isConnected = true;
-            }
-        }
-        return isConnected;
-    }
 }
