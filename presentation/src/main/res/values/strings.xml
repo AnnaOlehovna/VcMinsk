@@ -12,5 +12,6 @@
     <string name="stroitel_team">Строитель</string>
     <string name="empty_news">Вы не выбрали ни одной команды,\nдля которых отображаются новости.
     \nГляньте-ка в меню!</string>
-    <string name="no_internet">Подключите интернет, чтобы получить свежие новости</string>
+    <string name="no_internet">Подключите интернет,\nчтобы получить свежие новости</string>
+    <string name="server_error">Какая-то беда на сервере =(\nПопробуйте попозже</string>
 </resources>

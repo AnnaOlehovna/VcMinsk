@@ -53,7 +53,8 @@ public class RestService {
     public Flowable<List<News>> getNews(String[] team) {
         String str;
         if (team.length == 0) {
-            return Flowable.empty();
+            List<News> news = new ArrayList<>();
+            return Flowable.error(new MyError(ErrorType.NO_TEAM));
         } else if (team.length == 1) {
             str = "team='" + team[0] + "'";
         } else {
@@ -69,8 +70,9 @@ public class RestService {
     }
 
     public Flowable<News> getNewsById(String id){
-        return restApi.getNewsById(id)
-                .compose(errorTransformers.<News,MyError>parseHttpError());
+        return restApi
+                .getNewsById(id);
+//                .compose(errorTransformers.<News,MyError>parseHttpError());
     }
 
 }

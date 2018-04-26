@@ -2,6 +2,10 @@ package com.poddubnaya.vcminsk.presentation.screens.news;
 
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
+import android.databinding.ObservableField;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +22,13 @@ import com.poddubnaya.vcminsk.databinding.NewsActivityBinding;
 import com.poddubnaya.vcminsk.presentation.base.activity.BaseMvvmActivity;
 
 import javax.inject.Inject;
+
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
+import io.reactivex.subjects.PublishSubject;
 
 public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsViewModel, NewsRouter> {
 
@@ -112,5 +123,17 @@ public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsView
         mySharedPref.saveSharedPref(minchankaOn, stroitelOn);
         viewModel.onResume();
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
     }
 }

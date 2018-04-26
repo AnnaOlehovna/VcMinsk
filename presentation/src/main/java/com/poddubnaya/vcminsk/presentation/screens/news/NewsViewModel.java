@@ -3,6 +3,7 @@ package com.poddubnaya.vcminsk.presentation.screens.news;
 
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.poddubnaya.data.constants.Constants;
@@ -26,6 +27,7 @@ public class NewsViewModel extends BaseActivityViewModel<NewsRouter> {
     public NewsRecyclerAdapter adapter = new NewsRecyclerAdapter();
 
     public ObservableBoolean isEmpty = new ObservableBoolean();
+    public ObservableBoolean isError = new ObservableBoolean();
     public ObservableField<String> text = new ObservableField<>();
 
     public String[] teams;
@@ -57,16 +59,8 @@ public class NewsViewModel extends BaseActivityViewModel<NewsRouter> {
     public void onResume() {
         super.onResume();
         teams = mySharedPref.getSharedPref();
-        getNewsUseCase
-                .getNews(teams)
-                .isEmpty()
-                .subscribe(new Consumer<Boolean>() {
-            @Override
-            public void accept(Boolean aBoolean) throws Exception {
-                isEmpty.set(aBoolean);
-            }
-        });
-
+        isEmpty.set(false);
+        isError.set(false);
         getNewsUseCase
                 .getNews(teams)
                 .subscribe(new Consumer<List<NewsDomain>>() {
@@ -77,6 +71,7 @@ public class NewsViewModel extends BaseActivityViewModel<NewsRouter> {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        isError.set(true);
                         if (router != null) {
                             if (throwable instanceof MyError) {
                                 MyError myError = (MyError) throwable;
@@ -85,8 +80,11 @@ public class NewsViewModel extends BaseActivityViewModel<NewsRouter> {
                                         text.set(router.getActivity().getString(R.string.no_internet));
                                         break;
                                     case SERVER_NOT_AVAILABLE:
-                                        Toast.makeText(router.getActivity(), "Sorry, smth wrong with server. Please, try later" +
-                                                "Please, check internet", Toast.LENGTH_SHORT).show();
+                                        text.set(router.getActivity().getString(R.string.server_error));
+                                        break;
+                                    case NO_TEAM:
+                                        isEmpty.set(true);
+                                        text.set(router.getActivity().getString(R.string.empty_news));
                                         break;
                                     case UNKNOWN:
                                         break;

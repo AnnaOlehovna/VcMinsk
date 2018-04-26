@@ -40,26 +40,6 @@ public class SingleNewsViewModel extends BaseActivityViewModel<SingleNewsRouter>
                         title.set(newsDomain.getTitle());
                         text.set(newsDomain.getText());
                     }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        if(router!=null){
-                            if (throwable instanceof MyError) {
-                                MyError myError = (MyError) throwable;
-                                switch (myError.getMyError()) {
-                                    case NO_INTERNET:
-                                       text.set(router.getActivity().getString(R.string.no_internet));
-                                        break;
-                                    case SERVER_NOT_AVAILABLE:
-                                        Toast.makeText(router.getActivity(), "Sorry, smth wrong with server. Please, try later" +
-                                                "Please, check internet", Toast.LENGTH_SHORT).show();
-                                        break;
-                                    case UNKNOWN:
-                                        break;
-                                }
-                            }
-                        }
-                    }
                 });
     }
 }
