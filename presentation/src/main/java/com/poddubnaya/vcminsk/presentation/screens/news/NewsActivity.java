@@ -56,9 +56,7 @@ public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsView
     public NewsRouter provideRouter() {
         return new NewsRouter(this);
     }
-
-    private Disposable disposable;
-
+    
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -131,44 +129,4 @@ public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsView
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-       disposable= checkInternet()
-                .subscribe(new Consumer<Boolean>() {
-                    @Override
-                    public void accept(Boolean aBoolean) throws Exception {
-                        if (aBoolean)
-                            viewModel.onResume();
-                    }
-                });
-
-    }
-
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if (disposable != null)
-            disposable.dispose();
-    }
-
-
-    private Observable<Boolean> checkInternet() {
-        return Observable.create(new ObservableOnSubscribe<Boolean>() {
-            @Override
-            public void subscribe(final ObservableEmitter<Boolean> emitter) throws Exception {
-                BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-                    @Override
-                    public void onReceive(Context context, Intent intent) {
-                        boolean isConnected = InternetConnection.getInstance().checkNetwork(context);
-                        emitter.onNext(isConnected);
-                    }
-                };
-                IntentFilter intentFilter = new IntentFilter();
-                intentFilter.addAction(ConnectivityManager.CONNECTIVITY_ACTION);
-                registerReceiver(broadcastReceiver, intentFilter);
-            }
-        });
-    }
 }
