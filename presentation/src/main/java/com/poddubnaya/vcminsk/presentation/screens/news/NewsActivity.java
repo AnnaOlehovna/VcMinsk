@@ -56,7 +56,7 @@ public class NewsActivity extends BaseMvvmActivity<NewsActivityBinding, NewsView
     public NewsRouter provideRouter() {
         return new NewsRouter(this);
     }
-    
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

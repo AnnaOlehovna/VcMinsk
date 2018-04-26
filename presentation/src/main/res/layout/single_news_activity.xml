@@ -9,9 +9,10 @@
             type="com.poddubnaya.vcminsk.presentation.screens.singleNews.SingleNewsViewModel" />
     </data>
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.design.widget.AppBarLayout
             android:id="@+id/appbar"
@@ -40,32 +41,26 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@{viewModel.title}"
-            android:textAppearance="@style/TextRedTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appbar" />
+            android:textAppearance="@style/TextRedTitle"/>
 
         <ScrollView
+            android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:fillViewport="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/title_news">
+            android:fillViewport="true">
 
-            <TextView
-                android:id="@+id/text_news"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingBottom="10dp"
-                android:text="@{viewModel.text}"
-                android:textAppearance="@style/SimpleText" />
+                <TextView
+                    android:id="@+id/text_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:text="@{viewModel.text}"
+                    android:textAppearance="@style/SimpleText" />
         </ScrollView>
 
-
-    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
 
 </layout>
